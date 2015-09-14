@@ -1,8 +1,11 @@
 <h1>Questions</h1>
 
 <ul>
-  <% @questions.each do |question| %>
-    <li><%= question.title %></li>
-    <li><%= question.question %></li>
+  <% @questions.each do |q| %>
+    <li><%= q.title %></li>
+    <li>
+      <%= link_to q.question,
+      '/questions/' + q.to_param %>
+    </li>
   <%end%>
 </ul>

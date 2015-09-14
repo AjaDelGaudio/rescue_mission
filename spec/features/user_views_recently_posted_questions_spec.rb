@@ -34,13 +34,9 @@ feature 'user views index', %Q{
     question_2 = Question.create(title: "A question I am asking", question: "Cual es la pregunta que preguntas?")
     question_3 = Question.create(title: "La pregunta segundo", question: "Cual es la segunda pregunta que preguntas")
 
-    visit '/questions'
+    visit '/questions'  
 
     expect(question_1.created_at).to be < question_2.created_at
     expect(page.text.index(question_2.title)).to be < page.text.index(question_1.title)
   end
-end
-
-feature 'user views the show page of a question',  do
-
 end
