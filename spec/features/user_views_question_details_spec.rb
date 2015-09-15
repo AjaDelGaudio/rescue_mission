@@ -8,8 +8,8 @@ feature 'user views the show page of a question', %Q(As a user
 
        #  Acceptance Criteria
        # [X] I must be able to get to this page from the questions index
-       # [ ] I must see the question's title
-       # [ ] I must see the question's description
+       # [X] I must see the question's title
+       # [X] I must see the question's description
 
   scenario 'user navigates to the show page' do
     question_1 = Question.create(title: "Aja and Me!", question: "Does this work?")

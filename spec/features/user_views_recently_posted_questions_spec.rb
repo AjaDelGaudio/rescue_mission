@@ -24,6 +24,7 @@ feature 'user views index', %Q{
     question_3 = Question.create(title: "La pregunta segundo", question: "Cual es la segunda pregunta que preguntas")
 
     visit '/questions'
+    
     expect(page).to have_content(question_1.question)
     expect(page).to have_content(question_2.question)
     expect(page).to have_content(question_3.question)
@@ -34,7 +35,7 @@ feature 'user views index', %Q{
     question_2 = Question.create(title: "A question I am asking", question: "Cual es la pregunta que preguntas?")
     question_3 = Question.create(title: "La pregunta segundo", question: "Cual es la segunda pregunta que preguntas")
 
-    visit '/questions'  
+    visit '/questions'
 
     expect(question_1.created_at).to be < question_2.created_at
     expect(page.text.index(question_2.title)).to be < page.text.index(question_1.title)

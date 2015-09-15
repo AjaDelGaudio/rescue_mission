@@ -1,0 +1,23 @@
+<h1>Submit a Question!</h1>
+
+<%= form_for(@question) do |f| %>
+
+ <div class="field">
+   <%= f.label :title %><br>
+   <%= f.text_field :title %>
+ </div>
+
+ <div class="field">
+   <%= f.label :question %><br>
+   <%= f.text_field :question %>
+ </div>
+
+ <div class="actions">
+   <%= f.submit %>
+ </div>
+
+<% end %>
+
+<% if flash[:notice] %>
+   <div class="notice"><%= flash[:notice] %></div>
+ <% end %>
