@@ -1,3 +1,18 @@
+<h1>Question Page</h1>
+
 <h1><%= @question.title %> </h1>
 
 <h2><%= @question.question %></h2>
+
+ <h2>Answer the Question!</h2>
+
+ <%= form_for [@question, @answer] do |f| %>
+   <%= f.label :description %>
+   <%= f.text_field :description %>
+
+   <%= f.submit %>
+ <% end %>
+
+ <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>

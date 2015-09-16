@@ -5,6 +5,7 @@ class QuestionsController < ActionController::Base
 
   def show
     @question = Question.find(params[:id])
+    @answer = Answer.new
   end
 
   def new

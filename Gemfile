@@ -39,6 +39,10 @@ group :development, :test do
   gem 'capybara'
 
   gem 'factory_girl'
+
+  gem 'pry'
+
+  gem 'launchy'
 end
 
 group :development do
