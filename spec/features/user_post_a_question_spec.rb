@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'capybara'
+require 'spec_helper'
 
 feature 'user post a new question', %(
   As a user
@@ -9,9 +10,9 @@ feature 'user post a new question', %(
   #   Acceptance Criteria
   #
   # [X] I must be able to get to this page from the questions index
-  # [ ] I must provide a title that is at least 40 characters long
-  # [ ] I must provide a description that is at least 150 characters long
-  # [ ] I must be presented with errors if I fill out the form incorrectly
+  # [X] I must provide a title that is at least 40 characters long
+  # [X] I must provide a description that is at least 150 characters long
+  # [X] I must be presented with errors if I fill out the form incorrectly
 
   scenario 'user navigates to the new page from the questions index' do
 
@@ -28,10 +29,12 @@ feature 'user post a new question', %(
   end
 
   scenario "user submits a valid question" do
+    question_1 = FactoryGirl.create(:question)
+
     visit 'questions/new'
 
-    fill_in("Title", with: "What do you call a group of geese?")
-    fill_in("Question", with: "Is it geese? Gooses? Help me!")
+    fill_in("Title", with: question_1.title)
+    fill_in("Question", with: question_1.question)
     click_button("Create Question")
 
     expect(page).to have_content("Question successfully posted!")
@@ -39,9 +42,10 @@ feature 'user post a new question', %(
   end
 
   scenario "user submits a question without a title" do
+    question_1 = FactoryGirl.create(:question)
     visit 'questions/new'
 
-    fill_in("Question", with: "Something that we are asking with out a title")
+    fill_in("Question", with: question_1.question)
     click_button("Create Question")
 
     expect(page).to have_content("Please submit the field correctly!")
@@ -49,9 +53,10 @@ feature 'user post a new question', %(
   end
 
   scenario "user submits a question without a question" do
+    question_1 = FactoryGirl.create(:question)
     visit 'questions/new'
 
-    fill_in("Title", with: "Something that we are asking with out a question")
+    fill_in("Title", with: question_1.title)
     click_button("Create Question")
 
     expect(page).to have_content("Please submit the field correctly!")
@@ -59,8 +64,11 @@ feature 'user post a new question', %(
   end
 
   scenario "user submits a question with less than 150 characters" do
+    question_1 = FactoryGirl.create(:question)
     visit 'questions/new'
 
+
+    fill_in("Title", with: question_1.title)
     fill_in("Question", with: "Something that we are asking with less than 150 characters")
     click_button("Create Question")
 
@@ -69,30 +77,14 @@ feature 'user post a new question', %(
   end
 
   scenario "user submits a title with less than 40 characters" do
+    question_1 = FactoryGirl.create(:question)
     visit 'questions/new'
 
-    fill_in("Title", with: "Something that we are asking with a title of less than 40 characters")
+    fill_in("Title", with: "less than 40 characters")
+    fill_in("Question", with: question_1.question)
     click_button("Create Question")
 
     expect(page).to have_content("Please submit the field correctly!")
 
   end
-
-
-
-  # scenario 'the user is redirected to the questions page after submitting a form' do
-  #
-  #
-  # end
-
-  # scenario 'the user must provide a question that is at least 150 characters' do
-  #   visit '/questions/new'
-  #   fill_in('Question', with: '1234567890123456789012345678901234567890juu1234567890123456789012345678901234567890juu1234567890123456789012345678901234567890juu1234567890123456789012345678901234567890juu1234567890123456789012345678901234567890juu')
-  #   sample_question = '1234567890123456789012345678901234567890juu1234567890123456789012345678901234567890juu1234567890123456789012345678901234567890juu1234567890123456789012345678901234567890juu1234567890123456789012345678901234567890juu'
-  #   click_button('Create Question')
-  #
-  #   visit '/questions'
-  #   expect(page).to have_content(sample_question)
-  #
-  # end
 end
