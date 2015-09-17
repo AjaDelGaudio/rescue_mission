@@ -5,7 +5,8 @@ class QuestionsController < ActionController::Base
 
   def show
     @question = Question.find(params[:id])
-    @answer = Answer.new
+    @new_answer = Answer.new
+    @answers = @question.answers.order(created_at: :asc)
   end
 
   def new

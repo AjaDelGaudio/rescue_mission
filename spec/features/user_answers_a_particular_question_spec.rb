@@ -32,7 +32,7 @@ feature 'user can answer another users question', %(
     #Date.today
 
     # binding.pry
-    fill_in "Description", with: 'some desciption'
+    fill_in "Description", with: 'some desciption some desciption some desciption some desciption some desciption some desciption some desciption'
     click_button "Create Answer"
     expect(page).to have_content("You submitted an answer!")
   end

@@ -37,7 +37,6 @@ feature 'user views index', %Q{
     question_3 = FactoryGirl.create(:question)
 
     visit '/questions'
-
     expect(question_1.created_at).to be < question_2.created_at
     expect(page.text.index(question_2.title)).to be < page.text.index(question_1.title)
   end
