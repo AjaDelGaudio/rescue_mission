@@ -11,7 +11,7 @@ FactoryGirl.define do
 
   factory :answer do
     sequence(:description) { |n| "50charVersion#{n}.0123456789.0123456789.0123456789.0123456789.0123456789"}
-  #ask how to set it up with a questionid
+    association :question
   end
 
 end

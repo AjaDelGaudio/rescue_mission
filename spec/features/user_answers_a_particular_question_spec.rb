@@ -13,7 +13,7 @@ feature 'user can answer another users question', %(
      #
     #  [X] I must be on the question detail page
     #  [X] I must provide a description that is at least 50 characters long
-    #  [ ] I must be presented with errors if I fill out the form incorrectly)
+    #  [X] I must be presented with errors if I fill out the form incorrectly)
 
   scenario 'user navigates to the question detail page' do
     question_1 = FactoryGirl.create(:question)
@@ -27,10 +27,12 @@ feature 'user can answer another users question', %(
     question_1 = FactoryGirl.create(:question)
     visit question_path(question_1)
 
-    # answer_1 = FactoryGirl.create(:answer)
+    answer_1 = FactoryGirl.create(:answer)
+    #association  question its the trick for the factory girl
+    #Date.today
 
     # binding.pry
-    fill_in "Description", with: "S:LDIFHOSDIFHILSDUFHGIOSDUFHISUDHFIOUSDGFOIUSDGFOIUSDGFOIUGSDFGOUISDOGUFIGOSDIGSDFGIUGDFS"
+    fill_in "Description", with: 'some desciption'
     click_button "Create Answer"
     expect(page).to have_content("You submitted an answer!")
   end
