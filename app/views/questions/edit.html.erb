@@ -1,0 +1,26 @@
+<h1>Edit this Question!</h1>
+<h2><%= @question.title %></h2>
+
+<%= form_for(@question) do |f| %>
+
+ <div class="field">
+   <%= f.label :title %><br>
+   <%= f.text_field :title %>
+ </div>
+
+ <div class="field">
+   <%= f.label :question %><br>
+   <%= f.text_field :question %>
+ </div>
+
+ <div class="actions">
+   <br />
+   <%= f.submit('Submit Edit') %>
+ </div>
+<% end %>
+
+<p>Bloop bloop</p>
+
+<% if flash[:notice] %>
+   <div class="notice"><%= flash[:notice] %></div>
+ <% end %>

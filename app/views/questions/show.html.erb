@@ -17,6 +17,9 @@
    <%= f.submit %>
  <% end %>
 
+
+ <%= link_to 'Edit this Question', edit_question_path(@question) %>
+
  <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>

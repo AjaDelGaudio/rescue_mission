@@ -25,6 +25,22 @@ class QuestionsController < ActionController::Base
     end
   end
 
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:id])
+
+    if @question.update_attributes(question_params)
+      flash[:notice] = "You have successfully edited this question!"
+      redirect_to question_path(@question)
+    else
+      flash[:notice] = "Please fill out the field correctly!"
+      redirect_to :back
+    end
+  end
+
   private
 
     def question_params
