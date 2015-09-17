@@ -20,6 +20,8 @@
 
  <%= link_to 'Edit this Question', edit_question_path(@question) %>
 
+ <%= link_to 'Delete', @question, method: :delete %>
+
  <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>

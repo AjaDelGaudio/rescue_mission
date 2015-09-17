@@ -12,7 +12,7 @@ feature 'user edits a question', %(
 
   [X] I must provide valid information
   [X] I must be presented with errors if I fill out the form incorrectly
-  [ ] I must be able to get to the edit page from the question details page
+  [X] I must be able to get to the edit page from the question details page
 =end
 
 scenario 'user navigates to edit page' do

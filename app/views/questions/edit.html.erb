@@ -19,7 +19,7 @@
  </div>
 <% end %>
 
-<p>Bloop bloop</p>
+ <%= link_to 'Delete', @question, method: :delete %>
 
 <% if flash[:notice] %>
    <div class="notice"><%= flash[:notice] %></div>
