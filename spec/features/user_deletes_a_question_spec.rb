@@ -12,18 +12,19 @@ So that I can delete duplicate questions
 #
 #   [X] I must be able delete a question from the question edit page
 #   [X] I must be able delete a question from the question details page
-#   [ ] All answers associated with the question must also be deleted
 #
 
   scenario 'the user is able to delete a question from the edit page' do
     question_1 = FactoryGirl.create(:question)
+    thing = question_1.title
     answer_1 = FactoryGirl.create(:answer, question: question_1)
     answer_2 = FactoryGirl.create(:answer, question: question_1)
+
 
     visit edit_question_path(question_1)
     click_link 'Delete'
 
-    expect(page).to_not have_content(question_1.title)
+    expect(page).to_not have_content(thing)
 
   end
 
@@ -37,16 +38,5 @@ So that I can delete duplicate questions
 
     expect(page).to_not have_content(question_1.title)
 
-  end
-
-  scenario 'all the answers associated with the question are deleted' do
-    question_1 = FactoryGirl.create(:question)
-    answer_1 = FactoryGirl.create(:answer, question: question_1)
-    answer_2 = FactoryGirl.create(:answer, question: question_1)
-    @answer = question_1.answer
-
-
-    expect(page).to_not have_content(question_1.answer)
-    expect(page).to have_content('All answers deleted')
   end
 end

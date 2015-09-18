@@ -41,19 +41,17 @@ class QuestionsController < ActionController::Base
     end
   end
 
-binding.pry
   def destroy
     @question = Question.find(params[:id])
     @answers = @question.answers
 
-      @question.destroy
-    # if @answers.destroy
-    #   flash[:notice] = "All answers deleted"
-    #   redirect_to questions_path
-    # else
-    #   flash[:notice] = "Something went wrong"
-    #   redirect_to :back
-    # end
+    if @question.destroy
+      flash[:notice] = ""
+      redirect_to questions_path
+    else
+      flash[:notice] = "Something went wrong"
+      redirect_to :back
+    end
   end
 
   private
